@@ -1,32 +1,35 @@
-  
-/* https://www.youtube.com/watch?v=7aGLkT4y4ls */
-@import url(https://fonts.googleapis.com/css?family=roboto);
-
 body{
     background-color: #333;
     font-size: 22px;
     line-height: 32px;
-    color: #fff;
+    color: #ffffff;
     margin: 0;
     padding: 0;
-    word-wrap: break-word;
-    font-family: 'roboto',sans-serif;
+    /* word-wrap: break-word; */
 }
 a{
     color: #fff;
+    text-decoration: none;
 }
-.toggle,[id^=drop]{
-    /*display: none;*/
+/* Hide check boxes */
+.toggle,
+[id^=drop]{
+    display: none;
+}
+nav{
+    margin: 0;
+    padding: 0;
+    background-color: #515f9c;
 }
 #logo{
-    display:block ;
+    display: block;
     padding: 0 30px;
     float: left;
     font-size: 20px;
     line-height: 60px;
 }
-#main-toggle{
-    /* outline: 1px solid red; */
+/* #main-toggle{
+    
     cursor: pointer;
     float: right;
     padding: 28px 20px;
@@ -34,33 +37,47 @@ a{
     user-select: none;
 }
 .nav-icon{
-    background-color: orange;
+    background-color: #333;
+    display: block;
+    position: relative;
+    width: 18px;
+    background-color: rgb(29, 29, 70);
+} */
+#main-toggle{
+    cursor: pointer;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select:none;
+}
+.nav-icon{
+    background-color: #333;
     display: block;
     height: 2px;
-    width: 18px;
     position: relative;
-} 
+    width: 18px;
+    /* border: 1px red solid; */
+}
 .nav-icon:before,
-.nav-icon:after{
-    background-color: orange;
-    content: "";
+.nav-icon::after{
+    background-color: #333;
+    content: '';
     display: block;
     height: 100%;
-    width: 100%;
     position: absolute;
+    width: 100%;
 }
-.nav-icon:before{
+.nav-icon::before{
     top: 5px;
 }
-.nav-icon:after{
+.nav-icon::after{
     top: -5px;
 }
-nav:after{
-    content: "";
+nav::after{
+    content: '';
     display: table;
     clear: both;
 }
-
 nav ul{
     float: right;
     padding: 0;
@@ -70,34 +87,32 @@ nav ul{
 }
 nav ul li{
     margin: 0;
-    /* display: inline-block; */
     float: left;
     background-color: #515f9c;
 }
 nav a{
-    display:block;
+    display: block;
     padding: 0 20px;
-    color: #fff;
     font-size: 20px;
     line-height: 60px;
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 nav ul li ul li:hover{
-    background-color: #7083d8;
+    border: 2px solid #7083d8;
+    box-sizing: border-box;
 }
-
-nav a:hover {
-    background-color: #7083d8;
-  }
-nav ul ul{
+nav ul ul
+ {
     display: none;
     position: absolute;
-    /*top: 60px;*/
+    top: 60px;
+}
+nav ul li:hover>ul{
+    display: inherit;
 }
 nav ul ul li{
     width: 170px;
     float: none;
-    top: 60px;
     display: list-item;
     position: relative;
 }
@@ -105,31 +120,29 @@ nav ul ul ul li{
     position: relative;
     top: -60px;
     left: 170px;
-    /* outline: 1px solid red; */
 }
-nav ul li:hover>ul{
-    display: inherit;
+li>a::after{
+    content: '+';
 }
-li>a:after{
-    content: " +";
+li>a:only-child::after{
+    content: '';
 }
-li>a:only-child:after{
-    content: "";
-}
+/* Media Query
+--------------------- */
 @media all and (max-width:768px){
     nav{
-        margin:0;
+        margin: 0;
     }
     nav ul{
         float: none;
     }
     .toggle+a,
     .menu{
-        display:none;
+        display: none;
     }
     .toggle{
         display: block;
-        background-color: #515f9c;
+        background-color: #7083d8;
         padding: 0 20px;
         color: #fff;
         font-size: 20px;
@@ -137,49 +150,42 @@ li>a:only-child:after{
         text-decoration: none;
         border: none;
     }
-    .toggle:hover{
-        background-color: #7083d8;
-    }
-    [id^=drop]:checked+ul {
+    [id^=drop]:checked+ul{
         display: block;
-      }
+    }
     nav ul li{
         display: block;
-        width: 100%;
+        width: 100px;
     }
     nav ul ul .toggle,
     nav ul ul a{
         padding: 0 40px;
     }
     nav ul ul ul a{
-        padding: 0px 80px;
+        padding: 0 80px;
         background-color: #141625;
     }
     nav ul li ul li .toggle,
     nav ul ul a{
         background-color: #1f243b;
-
     }
-    nav ul ul {
+    nav ul ul{
         float: none;
         position: static;
         color: #ffffff;
-      }
-    nav ul ul li:hover>ul,
-    nav ul li:hover>ul{
+    }
+    nav ul ul list-style:hover>ul,
+    nav ul ul li:hover>ul{
         display: none;
     }
-    nav ul ul li{
+    nav ul ul ul li{
         display: block;
         width: 100%;
     }
-    nav ul ul li{
+    nav ul ul ul li{
         position: static;
     }
-    nav ul li ul li ul li{
-        position: static;
-        display: block;
+    nav ul li ul li{
         width: 100%;
     }
-
 }
